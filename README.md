@@ -64,12 +64,11 @@ return (
 > Other approaches at Typescript
 > ```jsx
 > import "../design-tokens/css.css";
-> import tokens, { sizes, token, tokenv } from '../design-tokens'
+> import tokens, { token, tokenv } from '../design-tokens'
 > 
 > return (
 >   <div style={{
 >     width: tokens.sizes[4], // => "1rem"
->     minWidth: sizes[4],  // => "1rem"
 >     height: token('sizes-4'), // => "1rem"
 >     minHeight: tokenv('sizes-4'), // => "var(--sizes-4)"
 >   }} />
@@ -257,4 +256,4 @@ function defineTokens(source: {
 
 ## License
 
-[MIT License](https://andreasonny.mit-license.org/2019) © Yoshimasa Otsubo
+[MIT License](https://andreasonny.mit-license.org/2019) © otsubocloud

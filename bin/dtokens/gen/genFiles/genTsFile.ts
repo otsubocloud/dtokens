@@ -31,18 +31,6 @@ export default function genTsFile(
 
   let code = '\n'
 
-  objects.forEach(row => {
-    const { typeName, typeCode, parentKey, jsonCode } = row
-    code += `// - - - - -\n`
-    code += `// ${typeName}\n`
-    code += `\n`
-    code += `export type ${typeName} = ` + typeCode + '\n'
-    code +=
-      `export const ${parentKey}: ${typeName} = ` +
-      jsonCode +
-      '\n'
-    code += `\n`
-  })
 
   code += `// - - - - -\n`
   code += `// DesignTokens\n`
@@ -63,13 +51,15 @@ export default function genTsFile(
     }
   )
   code += `}\n`
+  code += `\n`
+
   code += `const tokens: DesignTokens = {\n`
   dataSource.forEach(
-    ({ parentKey, typeName, value, valueType }) => {
+    ({ parentKey, typeName, jsonCode, value, valueType }) => {
       code +=
         tabSpaces(1) +
         (valueType === 'object'
-          ? `${parentKey},`
+          ? `${parentKey}: `+ jsonCode.split('\n').join('\n' + tabSpaces(1)) + ','
           : valueType === 'string'
           ? `${parentKey}: "${value}",`
           : `${parentKey}: ${value},`) +
@@ -81,6 +71,21 @@ export default function genTsFile(
   code += `export default tokens\n`
   code += `\n`
 
+  code += `// - - - - -\n`
+  code += `// token types\n`
+  code += `\n`
+
+  objects.forEach(row => {
+    const { typeName, typeCode, parentKey, jsonCode } = row
+    // code += `// - - - - -\n`
+    // code += `// ${typeName}\n`
+    // code += `\n`
+    code += `export type ${typeName} = ` + typeCode + '\n'
+  })
+
+
+
+  code += `\n`
   code += `// - - - - -\n`
   code += `// DesignTokenKey\n`
   code += `\n`

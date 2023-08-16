@@ -1,7 +1,7 @@
 {
   "name": "dtokens",
   "description": "Simple design-tokens generator",
-  "version": "0.0.12",
+  "version": "0.0.132",
   "type": "module",
   "bin": {
     "dtokens": "bin/dtokens/main.js"
@@ -45,8 +45,6 @@
     "url": "git+https://github.com/otsubocloud/dtokens.git"
   },
   "author": "otsubocloud",
-  "bugs": {
-    "url": "https://github.com/otsubocloud/dtokens/issues"
-  },
+  "keywords": ["design", "design guide", "design tokens", "tokens", "design system", "token generator"],
   "homepage": "https://github.com/otsubocloud/dtokens#readme"
 }
