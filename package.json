@@ -1,7 +1,7 @@
 {
   "name": "dtokens",
   "description": "Simple design-tokens generator",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "type": "module",
   "bin": {
     "dtokens": "bin/dtokens/main.js"

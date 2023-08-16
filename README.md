@@ -10,8 +10,8 @@ Simple design-tokens generator.
 
 ## Get Started
 1. Install
-```
-$ npm install --save-dev dtokens
+```sh
+npm install --save-dev dtokens
 ```
 2. Run command
 ```sh
@@ -159,7 +159,7 @@ const { pxToRem, remToPx, scalingFactors, toFontFamily } from 'dtokens/utils'
 export default defineTokens({
   tokens: {
     fonts: {
-      sans: toFontFamily(['Roboto', 'Helvetica Neue'], 'sans-serif'),
+      sans: toFontFamily(['Roboto', 'Helvetica Neue', 'sans-serif']),
       // => "Roboto, 'Helvetica Neue', sans-serif"
     },
     fontSizes: {
