@@ -1,3 +1,3 @@
-import * as defaults from './defaults.ts'
+import * as defaults from './defaults'
 
 export { defaults }

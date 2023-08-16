@@ -8,7 +8,7 @@ import getAppModuleRootUrl from '../utils/node/getAppModuleRoot.js'
 import getProjectRootUrl from '../utils/node/getProjectRootUrl.js'
 
 const INIT_CONFIG_FILE = 'bin/dtokens/init.config.ts'
-const IS_DEV = true
+const IS_DEV = false
 
 const arg = process.argv[2]
 const projectRootUrl = getProjectRootUrl()
@@ -33,10 +33,10 @@ const initConfig = () => {
     data = data.replace('{root}', './user')
     data = data.replace('{presets}', './presets')
   } else if (IS_DEV) {
-    data = data.replace('{root}', './node_modules/user')
+    data = data.replace('{root}', './node_modules/dtokens/user')
     data = data.replace(
       '{presets}',
-      './node_modules/presets'
+      './node_modules/dtokens/presets'
     )
   } else {
     data = data.replace('{root}', 'dtokens')
