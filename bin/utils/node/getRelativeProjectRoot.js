@@ -1,6 +1,4 @@
-export default function getRelativeProjectRoot(
-  fullPath: string
-) {
+exports.getRelativeProjectRoot = function (fullPath) {
   const projectUrl = process.cwd()
   const currentDir = fullPath.split(projectUrl)[1]
   let path = ''

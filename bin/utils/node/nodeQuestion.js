@@ -1,6 +1,6 @@
-import * as readline from 'readline'
+const readline = require('readline')
 
-export default function nodeQuestion(message, callback) {
+exports.nodeQuestion = function (message, callback) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,

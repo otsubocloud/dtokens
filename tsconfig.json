@@ -10,6 +10,9 @@
   },
   "ts-node": {
     "esm": true,
+    "compilerOptions": {
+      "module": "nodenext",
+    },
     "experimentalSpecifierResolution": "node"
   },
   "include": [],

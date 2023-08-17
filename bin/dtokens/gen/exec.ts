@@ -1,5 +1,3 @@
-import _path from 'path'
-import chalk from 'chalk'
 import { DefineTokensSource } from '../../config/types.ts'
 import replaceVariables from './formatData/replaceVariables.ts'
 import mapTokenKeys from './formatData/mapTokenKeys.ts'
@@ -7,11 +5,10 @@ import toCleanData from './formatData/toCleanData'
 import genCalcData from './genCalcData'
 import genTsFile from './genFiles/genTsFile'
 import genCssFile from './genFiles/genCssFile'
-import getRelativeProjectRoot from '../../utils/node/getRelativeProjectRoot.ts'
 
-const relativeProjectRoot = getRelativeProjectRoot(
-  _path.dirname(import.meta.url)
-)
+const relativeProjectRoot =
+  process.env.RELATIVE_PATH + '../'
+
 
 import(relativeProjectRoot + 'dtokens.config.ts').then(
   s => {
@@ -38,8 +35,6 @@ import(relativeProjectRoot + 'dtokens.config.ts').then(
       genCssFile(calcData, 'scss', config)
     }
 
-    console.log(
-      chalk.green('The configured tokens are generated.')
-    )
+    console.log('The configured tokens are generated.')
   }
 )
