@@ -9,7 +9,7 @@ Simple design-tokens generator.
 ## Get Started
 1. Install
 ```sh
-npm install --save-dev dtokens
+npm i -D dtokens
 ```
 2. Run command
 ```sh
@@ -170,7 +170,7 @@ export default defineTokens({
       ...scalingFactors([1, 2, 4, 8, 16, 32], {
         scaling: 4, //  variable => pxToRem( variable * 4 )
         unit: 'rem',
-      }), // => { 1: "0.25rem", 2: "0.5rem",  ....  }
+      }),
     },
   }
 })

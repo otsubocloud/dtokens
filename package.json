@@ -1,7 +1,7 @@
 {
   "name": "dtokens",
   "description": "Simple design-tokens generator",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "license": "MIT",
   "author": "otsubocloud",
   "bin": {
@@ -39,6 +39,14 @@
     "type": "git",
     "url": "git+https://github.com/otsubocloud/dtokens.git"
   },
-  "keywords": ["design", "design guide", "design tokens", "tokens", "design system", "token generator"],
+  "keywords": [
+    "react",
+    "design",
+    "design guide",
+    "design tokens",
+    "tokens",
+    "design system",
+    "token generator"
+  ],
   "homepage": "https://github.com/otsubocloud/dtokens#readme"
 }
