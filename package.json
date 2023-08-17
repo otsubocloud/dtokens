@@ -1,14 +1,14 @@
 {
   "name": "dtokens",
   "description": "Simple design-tokens generator",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "license": "MIT",
   "author": "otsubocloud",
   "bin": {
     "dtokens": "bin/dtokens/main.js"
   },
   "scripts": {
-    "dtokens": "NODE_ENV=dtokens-dev node bin/dtokens/main.js"
+    "dtokens": "cross-env NODE_ENV=dtokens-dev node bin/dtokens/main.js"
   },
   "main": "./user/index.ts",
   "exports": {
@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "@types/fs-extra": "^11.0.1",
+    "cross-env": "^7.0.3",
     "fs-extra": "^11.1.1",
     "js-convert-case": "^4.2.0",
     "ts-node": "^10.9.1",

@@ -1,5 +1,6 @@
+
 exports.getRelativeProjectRoot = function (fullPath) {
-  const projectUrl = process.cwd()
+  const projectUrl = process.cwd().replace(/\\/g, '/')
   const currentDir = fullPath.split(projectUrl)[1]
   let path = ''
   const names = currentDir.split('/').filter(path => !!path)

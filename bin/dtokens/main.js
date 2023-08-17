@@ -16,20 +16,19 @@ const INIT_CONFIG_FILE = 'bin/dtokens/init.config.ts'
 const IS_DEV = false
 
 const arg = process.argv[2]
-const projectRootUrl = process.cwd()
+const currentDirUrl = __dirname.replace(/\\/g, '/')
+const projectRootUrl = process.cwd().replace(/\\/g, '/')
 const appModuleRootUrl = getAppModuleRootUrl()
 
 const currentAbsoluteDir = (() => {
-  const fullPath = __dirname
-  const projectRoot = process.cwd()
-  return '.' + fullPath.split(projectRoot)[1]
+  return '.' + currentDirUrl.split(projectRootUrl)[1]
 })()
 
 const isConfigExist = fs.existsSync(
   path.join(projectRootUrl, 'dtokens.config.ts')
 )
 
-const relativePath = getRelativeProjectRoot(__dirname)
+const relativePath = getRelativeProjectRoot(currentDirUrl)
 
 const initConfig = () => {
   let data = fs.readFileSync(
@@ -62,7 +61,7 @@ const initConfig = () => {
 
 const tokenGen = () => {
   const result = execSync(
-    `RELATIVE_PATH=${relativePath} ts-node --esm ${currentAbsoluteDir}/gen/exec.ts`
+    `cross-env RELATIVE_PATH=${relativePath} ts-node --esm ${currentAbsoluteDir}/gen/exec.ts`
   )
   console.log(result.toString('utf-8'))
 }

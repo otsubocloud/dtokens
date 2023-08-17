@@ -1,6 +1,8 @@
-# dtokens
+# dtokens 
 
-Simple design-tokens generator.
+`beta version`
+
+Simple design-tokens generator. 
 
 ### Prerequisites 
 - Typescript environment
@@ -11,12 +13,21 @@ Simple design-tokens generator.
 ```sh
 npm i -D dtokens
 ```
-2. Run command
-```sh
-npm run dtokens init
+2. Update `package.json` file
+```json
+{
+  "scripts": {
+    "tokengen": "dtokens" // <-- update
+  }
+}
 ```
 
-3. The command will automatically create the following files at the root of your project directory.
+3. Run initialization command
+```sh
+npm run tokengen init
+```
+
+4. The command will automatically create the following files at the root of your project directory.
 ```
 ./dtokens.config.ts
 
@@ -88,9 +99,9 @@ export default defineTokens({
 })
 ```
 
-2. Run `dtokens` command to regenerate the token files.
+2. Run `tokengen` command to regenerate the token files.
 ```sh
-npm run dtokens
+npm run tokengen
 ```
 
 

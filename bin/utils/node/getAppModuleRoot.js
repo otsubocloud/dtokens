@@ -1,5 +1,6 @@
+
 exports.getAppModuleRootUrl = function () {
-  const arr = __dirname.split('/')
+  const arr = __dirname.replace(/\\/g, '/').split('/')
   let nodeModuleIndex = null
   for (let i = arr.length - 1; i > 0; i--) {
     if (arr[i] === 'node_modules') {
@@ -10,13 +11,13 @@ exports.getAppModuleRootUrl = function () {
 
   if (nodeModuleIndex !== null) {
     return (
-      process.cwd() +
+      process.cwd().replace(/\\/g, '/') +
       '/' +
       arr
         .slice(nodeModuleIndex, nodeModuleIndex + 2)
         .join('/')
     )
   } else {
-    return process.cwd()
+    return process.cwd().replace(/\\/g, '/')
   }
 }
