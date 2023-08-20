@@ -1,7 +1,7 @@
 // @ts-ignore
 import { defineTokens } from '{root}'
 // @ts-ignore
-import { defaults } from '{presets}'
+import { defaults, palettes } from '{presets}'
 
 export default defineTokens({
   config: {
@@ -14,7 +14,8 @@ export default defineTokens({
   },
   tokens: {
     spacing: defaults.spacing,
-    sizes: defaults.sizesLikePx,
+    sizes: defaults.sizes,
+    px: defaults.px,
     fonts: defaults.fonts,
     fontSizes: defaults.fontSizes,
     fontWeights: defaults.fontWeights,
@@ -23,6 +24,13 @@ export default defineTokens({
     radii: defaults.radii,
     shadows: defaults.shadows,
     breakpoints: defaults.breakpoints,
-    colors: {},
+    colors: {
+      primary: palettes.blue,
+      secondary: palettes.teal,
+      error: palettes.red,
+      warning: palettes.amber,
+      success: palettes.green,
+      info: palettes.sky,
+    },
   },
 })

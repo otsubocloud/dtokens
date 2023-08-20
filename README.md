@@ -4,6 +4,7 @@
 
 Simple design-tokens generator. 
 
+
 ### Prerequisites 
 - Typescript environment
 - node >= v16.15.1
@@ -22,7 +23,7 @@ npm i -D dtokens
 }
 ```
 
-3. Run initialization command
+3. Run `init` command
 ```sh
 npm run tokengen init
 ```
@@ -183,6 +184,25 @@ export default defineTokens({
         unit: 'rem',
       }),
     },
+  }
+})
+```
+
+### Generate color tokens with [paletten](https://github.com/otsubocloud/paletten)
+
+```js
+// dtokens.config.ts
+import { defineTokens } from 'dtokens'
+const { paletten } from 'dtokens/utils'
+
+export default defineTokens({
+  tokens: {
+    colors: {
+      primary: {
+        // `paletten` will automatically generate color tokens.
+        ...paletten('#ff0000')
+      }
+    }
   }
 })
 ```

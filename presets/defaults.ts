@@ -33,7 +33,7 @@ export const sizes = {
   ),
 }
 
-export const sizesLikePx = {
+export const px = {
   px: '1px',
   ...scalingFactors(
     [
@@ -48,6 +48,7 @@ export const sizesLikePx = {
     }
   ),
 }
+export const sizesLikePx = px
 
 export const sansFontNames = [
   'ui-sans-serif',
@@ -153,10 +154,10 @@ export const shadows = {
 }
 
 export const breakpoints = {
-  ['xs']: '0px',
+  ['xs']: '400px',
   ['sm']: '640px',
-  ['md']: '900px',
-  ['lg']: '1200px',
-  ['xl']: '1536px',
+  ['md']: '768px',
+  ['lg']: '1024px',
+  ['xl']: '1280px',
+  ['2xl']: '1536px',
 }
-
