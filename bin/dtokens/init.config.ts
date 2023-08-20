@@ -1,7 +1,7 @@
 // @ts-ignore
 import { defineTokens } from '{root}'
 // @ts-ignore
-import { defaults, palettes } from '{presets}'
+import { defaults, palettes, mapKeys } from '{presets}'
 
 export default defineTokens({
   config: {
@@ -11,6 +11,7 @@ export default defineTokens({
       cssFile: 'design-tokens/css.css',
       scssFile: 'design-tokens/scss.scss',
     },
+    mapKeys: mapKeys.singularMapKeys,
   },
   tokens: {
     spacing: defaults.spacing,

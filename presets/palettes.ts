@@ -1,4 +1,4 @@
-import paletten from 'paletten'
+import paletten from '../paletten'
 
 export const red = paletten({
   0: 'hsl(0,90%,100%)',
