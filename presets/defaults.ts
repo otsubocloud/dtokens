@@ -117,7 +117,7 @@ export const lineHeights = {
   loose: 2,
 }
 
-export const letterSpacings = {
+export const letterSpacing = {
   tighter: '-0.05em',
   tight: '-0.025em',
   normal: '0em',

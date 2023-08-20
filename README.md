@@ -231,7 +231,7 @@ function defineTokens(source: {
       fontSizes?: string
       fontWeights?: string
       lineHeights?: string
-      letterSpacings?: string
+      letterSpacing?: string
       radii?: string
       shadows?: string
       breakpoints?: string
@@ -258,7 +258,7 @@ function defineTokens(source: {
     lineHeights?: {
       [key: string]: string | number | Object
     },
-    letterSpacings?: {
+    letterSpacing?: {
       [key: string]: string | number | Object
     },
     radii?: {

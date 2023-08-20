@@ -25,7 +25,7 @@ type SystemTokens = {
   fontSizes?: TokenData
   fontWeights?: TokenData
   lineHeights?: TokenData
-  letterSpacings?: TokenData
+  letterSpacing?: TokenData
   radii?: TokenData
   shadows?: TokenData
   breakpoints?: TokenData

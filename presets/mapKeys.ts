@@ -6,7 +6,7 @@ export const singularMapKeys = {
   fontSizes: 'fontSize',
   fontWeights: 'fontWeight',
   lineHeights: 'lineHeight',
-  letterSpacings: 'letterSpacing',
+  letterSpacing: 'letterSpacing',
   radii: 'radius',
   shadows: 'shadow',
   breakpoints: 'breakpoint',
