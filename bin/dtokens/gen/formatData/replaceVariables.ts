@@ -99,11 +99,16 @@ const replaceVariable = (
     let matchedValue: any
     let current: any = tokens
     for (let key of keys) {
-      if (!!current[key]) {
-        matchedValue = current[key]
-        break
-      } else {
-        current = current[key]
+      if (
+        current !== undefined &&
+        current[key] !== undefined
+      ) {
+        if (isStringOrNumber(current[key])) {
+          matchedValue = current[key]
+          break
+        } else {
+          current = current[key]
+        }
       }
     }
     if (isStringOrNumber(matchedValue)) {

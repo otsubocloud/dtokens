@@ -17,8 +17,8 @@ import(relativeProjectRoot + 'dtokens.config.ts').then(
 
     const targets = config?.targets
 
-    let data = replaceVariables(source)
-    data = mapTokenKeys(data)
+    let data = mapTokenKeys(source)
+    data = replaceVariables(data)
     data = toCleanData(data)
 
     const calcData = genCalcData(data)
