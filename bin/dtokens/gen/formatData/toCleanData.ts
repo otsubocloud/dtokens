@@ -2,9 +2,9 @@ import {
   DefineTokensSource,
   TokenData,
 } from '../../../config/types.ts'
-import { invalidRegExp } from '../const'
 import isValidValue from '../../../utils/isValidValue'
 import isStringOrNumber from '../../../utils/isStringOrNumber'
+import escapeJsonKey from "./escapeJsonKey";
 
 const MAX_REPEAT = 10
 
@@ -26,7 +26,7 @@ export default function toCleanData(
       } = {}
       for (let key of Object.keys(data)) {
         const v = data[key]
-        const newKey = key.replace(invalidRegExp, '')
+        const newKey = escapeJsonKey(key)
         if (isValidValue(v)) {
           if (isStringOrNumber(v)) {
             newData[newKey] = v

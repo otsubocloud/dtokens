@@ -4,8 +4,7 @@ import {
 } from '../../../config/types'
 import genVarsData from './genVarsData'
 import genTsCode from './genTsCode'
-import removeEscapeString from '../../../utils/removeEscapeString'
-import { toCamelCase, toPascalCase } from 'js-convert-case'
+import { toPascalCase } from 'js-convert-case'
 
 export default function genCalcData(
   source: DefineTokensSource
@@ -16,7 +15,7 @@ export default function genCalcData(
   Object.keys(tokens).forEach(key => {
     const value = tokens[key]!
 
-    const parentKey = toCamelCase(removeEscapeString(key))
+    const parentKey = key // toCleanParentKeysでフォーマット済み
     const typeName = toPascalCase(parentKey)
     const jsonCode = genTsCode(value, 'json')
     const typeCode = genTsCode(value, 'type')

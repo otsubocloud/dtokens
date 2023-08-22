@@ -7,15 +7,17 @@ export type DefineTokensSource = {
       scssFile?: string
     }
     cssRules?: CssRules
-    mapKeys?: {
-      [key in keyof SystemTokens]?: string
-    } & {
-      [key: string]: string
-    }
+    mapKeys?: MapKeys
   }
   tokens: SystemTokens & {
     [key: string]: string | number | TokenData | undefined
   }
+}
+
+export type MapKeys = {
+  [key in keyof SystemTokens]?: string
+} & {
+  [key: string]: string
 }
 
 type SystemTokens = {

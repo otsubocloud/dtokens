@@ -5,10 +5,10 @@ import toCleanData from './formatData/toCleanData'
 import genCalcData from './genCalcData'
 import genTsFile from './genFiles/genTsFile'
 import genCssFile from './genFiles/genCssFile'
+import toCleanParentKeys from './formatData/toCleanParentKeys'
 
 const relativeProjectRoot =
   process.env.RELATIVE_PATH + '../'
-
 
 import(relativeProjectRoot + 'dtokens.config.ts').then(
   s => {
@@ -17,11 +17,12 @@ import(relativeProjectRoot + 'dtokens.config.ts').then(
 
     const targets = config?.targets
 
-    let data = mapTokenKeys(source)
-    data = replaceVariables(data)
-    data = toCleanData(data)
+    let originalData = toCleanParentKeys(source)
+    originalData = toCleanData(originalData)
+    originalData = replaceVariables(originalData)
+    const mappedData = mapTokenKeys(originalData)
 
-    const calcData = genCalcData(data)
+    const calcData = genCalcData(mappedData)
 
     if (!targets || targets?.includes('ts')) {
       genTsFile(calcData, config)
