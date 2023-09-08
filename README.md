@@ -1,13 +1,6 @@
 # dtokens 
 
-`beta version`
-
-Simple design-tokens generator. 
-
-
-### Prerequisites 
-- Typescript environment
-- node >= v16.15.1
+Simple design-tokens generator. `[beta]`
 
 ## Get Started
 1. Install
@@ -47,7 +40,7 @@ npm run tokengen init
 
 #### CSS in JS
 ```jsx
-import tokens from '../design-tokens'
+import tokens from '/your-path-to/design-tokens/index'
 
 return (
   <h3 style={{
@@ -60,7 +53,7 @@ return (
 
 #### CSS
 ```css
-import "../design-tokens/css.css";
+import "/your-path-to/design-tokens/css.css";
 
 .header {
   font-size: var(--fontSize-md);
@@ -69,7 +62,7 @@ import "../design-tokens/css.css";
 
 #### SCSS
 ```scss
-@import "../design-tokens/scss";
+@import "/your-path-to/design-tokens/scss.scss";
 
 .header {
   font-size: $fontSize-md;
@@ -79,8 +72,8 @@ import "../design-tokens/css.css";
 ### CSS variable approaches
 > CSS in JS
 > ```jsx
-> import "../design-tokens/css.css";
-> import tokens from '../design-tokens'
+> import "/your-path-to/design-tokens/css.css";
+> import tokens from "/your-path-to/design-tokens/index";
 > 
 > return (
 >   <h3 style={{
@@ -93,8 +86,8 @@ import "../design-tokens/css.css";
 
 > SCSS
 > ```scss
-> @import "../design-tokens/css.css";
-> @import "../design-tokens/scss.scss";
+> @import "/your-path-to/design-tokens/css.css";
+> @import "/your-path-to/design-tokens/scss.scss";
 > 
 > .header {
 >   font-size: $v-fontSize-md; // -> var(--fontSize-md)
@@ -183,7 +176,7 @@ export default defineTokens({
 > Usage 
 > ```scss
 > // SCSS
-> @import "../design-tokens/scss";
+> @import "/your-path-to/design-tokens/scss.scss";
 > 
 > .box {
 >   font-size: $fs-3;
