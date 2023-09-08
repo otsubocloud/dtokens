@@ -18,6 +18,7 @@ export type DefineStyles = {
 }
 
 export type DefineConfig = {
+  targets?: ('ts' | 'css' | 'scss')[]
   outputs?: OutputsConfig
   values?: ValuesConfig
   cssRules?: CssRules

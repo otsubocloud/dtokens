@@ -2,6 +2,9 @@
 
 Simple design-tokens generator. `[beta]`
 
+
+![sample](https://drive.google.com/uc?export=view&id=1vTGxnwZ4oeU6vSh3MB-sT5L5yqTez8gJ)
+
 ## Get Started
 1. Install
 ```sh

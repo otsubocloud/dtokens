@@ -1,7 +1,7 @@
 {
   "name": "dtokens",
   "description": "Simple design-tokens generator",
-  "version": "0.1.0-beta",
+  "version": "0.1.2-beta",
   "license": "MIT",
   "author": "otsubocloud",
   "bin": {
