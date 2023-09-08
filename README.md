@@ -15,11 +15,15 @@ Simple design-tokens generator.
 npm i -D dtokens
 ```
 2. Update `package.json` file
-```json
+```js
 {
+  ...
   "scripts": {
-    "tokengen": "dtokens" // <-- update
-  }
+    ...
+    "tokengen": "dtokens", // <- add
+    ...
+  },
+  ...
 }
 ```
 
@@ -41,13 +45,25 @@ npm run tokengen init
 
 ## Usage
 
+#### CSS in JS
+```jsx
+import tokens from '../design-tokens'
+
+return (
+  <h3 style={{
+    fontSize: tokens.fontSize.md,
+  }}>
+     Header
+  </h3>
+)
+```
 
 #### CSS
 ```css
 import "../design-tokens/css.css";
 
 .header {
-  font-size: var(--fontSizes-md);
+  font-size: var(--fontSize-md);
 }
 ```
 
@@ -56,47 +72,63 @@ import "../design-tokens/css.css";
 @import "../design-tokens/scss";
 
 .header {
-  font-size: $fontSizes-md;
+  font-size: $fontSize-md;
 }
 ```
 
-#### Typescript
-```jsx
-import tokens from '../design-tokens'
-
-return (
-  <div style={{
-    fontSizes: tokens.fontSizes.md,
-  }} />
-)
-```
-
-> Other approaches at Typescript
+### CSS variable approaches
+> CSS in JS
 > ```jsx
 > import "../design-tokens/css.css";
-> import tokens, { token, tokenv } from '../design-tokens'
+> import tokens from '../design-tokens'
 > 
 > return (
->   <div style={{
->     width: tokens.sizes[4], // => "1rem"
->     height: token('sizes-4'), // => "1rem"
->     minHeight: tokenv('sizes-4'), // => "var(--sizes-4)"
->   }} />
+>   <h3 style={{
+>     fontSize: tokens.v.fontSize.md, // -> "var(--fontSize-md)"
+>   }}>
+>     Header
+>   </h3>
 > )
 > ```
 
+> SCSS
+> ```scss
+> @import "../design-tokens/css.css";
+> @import "../design-tokens/scss.scss";
+> 
+> .header {
+>   font-size: $v-fontSize-md; // -> var(--fontSize-md)
+> }
+> ```
+
+> You can use CSS variable as default token value as follows:
+> ```js
+> defineTokens({
+>   config: {
+>     ...
+>     values: {
+>       tokensPriority: 'css-var',
+>       scssPriority: 'css-var',
+>     }
+>     ...
+>   },
+>   ...
+> })
+
 ## Customize Tokens
 
-1. Change `dtokens.config.ts` file at the root of your project directory.
+1. Change `dtokens.config` file at the root of your project directory.
 
 ```ts
-// dtokens.config.ts
+// dtokens.config file
 
 import { defineTokens } from "dtokens"
 
 export default defineTokens({
-  config: {},
-  tokens: {},
+  config: { ... },
+  tokens: {
+    ...
+  },
 })
 ```
 
@@ -111,7 +143,7 @@ npm run tokengen
 ### Referencing other values
 
 ```js
-// dtokens.config.ts
+// dtokens.config file
 
 export default defineTokens({
   tokens: {
@@ -148,7 +180,6 @@ export default defineTokens({
   }
 })
 ```
-
 > Usage 
 > ```scss
 > // SCSS
@@ -158,10 +189,35 @@ export default defineTokens({
 >   font-size: $fs-3;
 > }
 > ```
+
+
+### Nest Hierarchy Skipping
+
+```js
+// dtokens.config file
+
+export default defineTokens({
+  tokens: {
+    '(colors)': {
+      primary: {
+        500: '#ff0000',
+      }
+    },
+  }
+})
+```
+> Usage 
+> ```js
+> <div style={{
+>   color: tokens.primary[500] // instead of `tokens.colors.primary[500]`
+> }} />
+> ```
+
 ### Configure with utilities
 
 ```js
-// dtokens.config.ts
+// dtokens.config file
+
 import { defineTokens } from 'dtokens'
 const { pxToRem, remToPx, scalingFactors, toFontFamily } from 'dtokens/utils'
 
@@ -191,7 +247,8 @@ export default defineTokens({
 ### Generate color tokens with [paletten](https://github.com/otsubocloud/paletten)
 
 ```js
-// dtokens.config.ts
+// dtokens.config file
+
 import { defineTokens } from 'dtokens'
 const { paletten } from 'dtokens/utils'
 
@@ -209,19 +266,28 @@ export default defineTokens({
 
 ## API
 ```tsx
-// dtokens.config.ts
+// dtokens.config file
+
 function defineTokens(source: {
   config?: {
-    targets?: ("ts" | "css" | "scss")[] // default: ['ts', 'css', 'scss']
-    outputs?: {
-      tsFile?: string // default: 'design-tokens/index.ts'
-      cssFile?: string // default: 'design-tokens/css.css'
-      scssFile?: string // default: 'design-tokens/scss.scss'
+    outputs?: { // set output file path. e.g., 'design-tokens/index.ts'
+      tsFile?: string
+      jsFile?: string
+      cssFile?: string
+      scssFile?: string
+      jsonFile?: string
+      jsType?: 'module' | 'require'
+    }
+    values?: {
+      tokensPriority?: 'pure-value' | 'css-var' // default: 'pure-value'
+      scssPriority?: 'pure-value' | 'css-var' // default: 'pure-value'
+      tokensWithV?: boolean
+      scssWithV?: boolean
     }
     cssRules?: {
       prefix?: string // e.g. 'd-'
-      separation?: '-' |  '_' | string // default: '-'
-      naming?: 'unset' | 'kebab' | 'snake' // default: 'unset'
+      separation?: '-' |  '_' | 'auto' | string // default: '-'; 'auto': separation is depend on 'naming'
+      naming?: 'unset' | 'kebab' | 'snake' | 'pascal'| 'camel' // default: 'unset'
       decimalPoint?: 'dot' | 'underscore' | 'hyphen' // default: 'dot'
     },
     mapKeys?: {
@@ -237,7 +303,7 @@ function defineTokens(source: {
       breakpoints?: string
       colors?: string
       [key: string]: string
-    },
+    }
   },
   tokens: {
     spacing?: {
@@ -278,7 +344,7 @@ function defineTokens(source: {
     [key: string]: {
       [key: string]: string | number | Object
     }
-  },
+  }
 }) 
 ```
 

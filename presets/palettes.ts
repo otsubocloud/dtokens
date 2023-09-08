@@ -1,4 +1,4 @@
-import paletten from '../paletten'
+import { paletten } from '../utils'
 
 export const red = paletten({
   0: 'hsl(0,90%,100%)',
@@ -153,7 +153,6 @@ export const pink = paletten({
   900: 'hsl(330,90%,30%)',
   1000: 'hsl(330,100%,15%)',
 })
-
 
 export const rose = paletten({
   0: 'hsl(350,100%,100%)',

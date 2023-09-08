@@ -1,3 +1,3 @@
-import defineTokens from './defineTokens.ts'
+import defineTokens from './defineTokens'
 
 export { defineTokens }

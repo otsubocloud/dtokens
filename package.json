@@ -1,35 +1,45 @@
 {
   "name": "dtokens",
   "description": "Simple design-tokens generator",
-  "version": "0.0.199-dev",
+  "version": "0.1.0-beta",
   "license": "MIT",
   "author": "otsubocloud",
   "bin": {
-    "dtokens": "bin/dtokens/main.js"
+    "dtokens": "bin/node/main.js"
   },
   "scripts": {
-    "dtokens": "cross-env NODE_ENV=dtokens-dev node bin/dtokens/main.js"
+    "dist": "tsc -p bin/tsconfig.cjs.json & tsc -p tsconfig.cjs.json",
+    "gen": "cross-env NODE_ENV=dtokens-dev node bin/node/main.js"
   },
   "main": "./user/index.ts",
   "exports": {
-    ".": "./user/index.ts",
-    "./utils": "./utils/index.ts",
-    "./presets": "./presets/index.ts"
+    ".": {
+      "import": "./user/index.ts",
+      "require": "./user/index.js"
+    },
+    "./utils": {
+      "import": "./utils/index.ts",
+      "require": "./utils/index.js"
+    },
+    "./presets": {
+      "import": "./presets/index.ts",
+      "require": "./presets/index.js"
+    }
   },
   "files": [
     "bin",
     "presets",
-    "paletten",
     "user",
     "utils",
     "tsconfig.json",
     "package.json"
   ],
   "dependencies": {
-    "@types/fs-extra": "^11.0.1",
     "cross-env": "^7.0.3",
-    "fs-extra": "^11.1.1",
-    "js-convert-case": "^4.2.0",
+    "csstype": "^3.1.2",
+    "inquirer": "^9.2.10",
+    "paletten": "^0.0.6-beta",
+    "socket.io": "^4.7.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
@@ -42,13 +52,14 @@
     "url": "git+https://github.com/otsubocloud/dtokens.git"
   },
   "keywords": [
-    "react",
-    "design",
-    "design guide",
     "design tokens",
-    "tokens",
     "design system",
-    "token generator"
+    "design",
+    "schema",
+    "theme",
+    "brand",
+    "colors",
+    "colours"
   ],
   "homepage": "https://github.com/otsubocloud/dtokens#readme"
 }
